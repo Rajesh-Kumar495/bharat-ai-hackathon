@@ -72,6 +72,7 @@ export default function Home() {
         headers: { 
           "Content-Type": "multipart/form-data",
           "ngrok-skip-browser-warning": "true",
+          "x-hackathon-token": "bharat-ai-soc@26*"
         },
       });
       
