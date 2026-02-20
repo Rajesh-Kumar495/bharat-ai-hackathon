@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PYNQ board details to run server code
 
-## Getting Started
+ssh into the board: "ssh -X -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa root@192.168.1.224" password: xilinx
 
-First, run the development server:
+code sits in /board_ui/server.py
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+To run the code: "python3 server.py"
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Any changes in the board server code will require a restart of the board server.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# For local machine to run the UI
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+npm.cmd run dev
 
-## Learn More
+First ssh into the board and run the board server code
 
-To learn more about Next.js, take a look at the following resources:
+In new terminal, run "ssh -L 8000:127.0.0.1:8000 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa root@192.168.1.224" to tunnel the board to your local machine, password: xilinx
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# To run the UI on internet
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+First ssh into the board and run the board server code
 
-## Deploy on Vercel
+In new terminal, run "ssh -L 8000:127.0.0.1:8000 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa root@192.168.1.224" to tunnel the board to your local machine, password: xilinx
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+In another new terminal, run "ngrok http 8000" to get the https:// link from ngrok and paste it in the UI board URL field.
